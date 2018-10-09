@@ -11,6 +11,12 @@ contract campaign {
   address public manager;
   uint public minContribution;
   address[] public approvers;
+  Request[] public requests;
+
+  modifier restricted() {
+    require(msg.sender == manager);
+    _;
+  }
 
   function Campaign(uint minimum) public {
     manager = msg.sender;
@@ -22,6 +28,5 @@ contract campaign {
 
     approvers.push(msg.sender);
   }
-
 
 }
