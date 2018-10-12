@@ -32,7 +32,7 @@ contract campaign {
   function createRequest(string desc, uint val, address recipient)
   public restricted
   {
-    Request newRequest = Request
+    Request memory newRequest = Request
     ({
       description: desc,
       value: val,
