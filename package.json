@@ -13,17 +13,10 @@
     "type": "git",
     "url": "git+https://github.com/BryB/SolidityKickstarter.git"
   },
-  "author": "Bryan Brady",
+  "author": "Bryan_Brady",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/BryB/SolidityKickstarter/issues"
   },
-  "homepage": "https://github.com/BryB/SolidityKickstarter#readme",
-  "dependencies": {
-    "fs-extra": "^7.0.0",
-    "ganache-cli": "^6.1.8",
-    "mocha": "^5.2.0",
-    "solc": "^0.4.25",
-    "web3": "^1.0.0-beta.35"
-  }
+  "homepage": "https://github.com/BryB/SolidityKickstarter#readme"
 }
