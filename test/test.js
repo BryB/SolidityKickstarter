@@ -8,17 +8,19 @@ const provider = ganache.provider();
 const web3 = new Web3(provider);
 
 let accounts;
-let inbox;
-const INIT_MESSAGE = "LOLZ!";
+let factory;
+let campaignAddress;
+let campaign;
+
 
 beforeEach (async () => {
   // get a list of all accounts.
   accounts = await web3.eth.getAccounts();
   // use one of the listed accouts to deploy the contract.
-  inbox = await new web3.eth.Contract(JSON.parse(interface))
-  .deploy({data: bytecode, arguments: ["LOLZ!"]})
+  factory = await new web3.eth.Contract(JSON.parse(compiledFactory.interface))
+  .deploy({data: compiledFactory.bytecode})
   .send({from: accounts[0], gas: '1000000'});
-  inbox.setProvider(provider);
+  factory.setProvider(provider);
 });
 
 describe('Inbox', () => {
