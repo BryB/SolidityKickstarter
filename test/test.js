@@ -1,11 +1,10 @@
 const assert = require('assert');
 const ganache = require('ganache-cli');
 const Web3 = require('web3');
-const compiledFactory = require('../eth/contracts/build/campaignFactory.json');
-const compiledCampaign = require('../eth/contracts/build/Campaign.json');
+const web3 = new Web3(ganache.provider());
+const compiledFactory = require('../eth/build/campaignFactory.json');
+const compiledCampaign = require('../eth/build/Campaign.json');
 
-const provider = ganache.provider();
-const web3 = new Web3(provider);
 
 let accounts;
 let factory;
@@ -20,16 +19,20 @@ beforeEach (async () => {
   factory = await new web3.eth.Contract(JSON.parse(compiledFactory.interface))
   .deploy({data: compiledFactory.bytecode})
   .send({from: accounts[0], gas: '1000000'});
-  factory.setProvider(provider);
+  await factory.methods.createCampaign('100').send({
+    from: accounts[0],
+    gas: "100000"
+  });
+  [campaignAddress] = await factory.methods.getDeployedCampaigns().call();
+  campaign = await new web3.eth.Contract(
+    JSON.parse(compiledCampaign.interface),
+    campaignAddress
+  );
 });
 
-describe('Inbox', () => {
-  it ('deploys a contract', () => {
-    assert.ok(inbox.options.address);
+describe('Campaigns', () => {
+  it ('deploys a campaign and a factory', () => {
+    assert.ok(factory.options.address);
+    assert.ok(campaign.options.address);
   });
-  it ('can change the message', async() => {
-    await inbox.methods.setMessage("Bye").send({from: accounts[0]});
-    const message = await inbox.methods.getMessage().call();
-    assert.equal(message, 'Bye');
-  })
 });
