@@ -11,7 +11,7 @@ let factory;
 let campaignAddress;
 let campaign;
 
-
+/*
 beforeEach (async () => {
   // get a list of all accounts.
   accounts = await web3.eth.getAccounts();
@@ -36,3 +36,4 @@ describe('Campaigns', () => {
     assert.ok(campaign.options.address);
   });
 });
+*/

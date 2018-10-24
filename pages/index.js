@@ -1,5 +1,16 @@
-import React from 'react';
+import React, {Component} from 'react';
+import factory from '../eth/factory';
 
-export default () => {
-  return <h1>This is the index page!</h1>;
-};
+
+class campaignIndex extends Component {
+  async ComponentDidMount() {
+    const campaigns = await factory.methods.getDeployedCampaigns().call();
+    console.log(campaigns);
+  }
+
+  render(){
+    return <div>Campaigns index</div>
+  }
+}
+
+export default campaignIndex;
