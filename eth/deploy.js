@@ -3,10 +3,10 @@ const Web3 = require('web3');
 const compiledFactory = require('./build/campaignFactory.json');
 
 const mneumonic = 'strong round enhance lazy stage sick message buzz dirt neutral ripple unhappy';
-const infuraRinkeby = 'https://rinkeby.infura.io/v3/b447136315464ae5aa79d1c4de788883';
+const rinkebyNode = 'https://rinkeby.infura.io/v3/b447136315464ae5aa79d1c4de788883';
 
 const provider = new HDWalletProvider(
-  mneumonic, infuraRinkeby
+  mneumonic, rinkebyNode
 );
 
 const web3 = new Web3(provider);
