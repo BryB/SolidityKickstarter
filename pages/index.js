@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import factory from '../eth/factory';
 import {Card, Button} from 'semantic-ui-react';
 import Layout from '../components/layout';
 import {Link} from '../routes';
+import factory from '../eth/factory';
+
 
 class campaignIndex extends Component {
   static async getInitialProps() {
@@ -30,7 +31,7 @@ class campaignIndex extends Component {
       <Layout>
         <div>
           <h3>Open Campaigns</h3>
-          <Link route="campaigns/new">
+          <Link route="/campaigns/new">
             <a>
               <Button
                 floated="right"
